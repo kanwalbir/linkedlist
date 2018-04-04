@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
         jobTitle: { type: String },
         company: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Company'
+          ref: "Company"
         },
         startDate: { type: Date },
         endDate: { type: Date, default: Date.now }
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
       {
         institution: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'Inst'
+          ref: "Inst"
         },
         degree: String,
         endDate: { type: Date }
@@ -45,12 +45,28 @@ const userSchema = new mongoose.Schema(
     skills: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Skill'
+        ref: "Skill"
+      }
+    ],
+    jobsApplied: [
+      {
+        jobId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Job"
+        }
+      }
+    ],
+    connection: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User"
+        }
       }
     ]
   },
   { timestamps: true }
 );
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
