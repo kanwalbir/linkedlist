@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       index: { unique: true }
     },
-    password: { type: String, required: true },
+    password: { type: String, min: 1, max: 55, required: true },
     currentCompany: { type: String, min: 1, max: 55 },
     photo: { type: String }, //mongoose.SchemaTypes.Url,
     experience: [
@@ -45,7 +45,7 @@ const userSchema = new mongoose.Schema(
     skills: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Skills'
+        ref: 'Skill'
       }
     ]
   },
