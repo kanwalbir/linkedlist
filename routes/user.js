@@ -40,4 +40,7 @@ router.post("/:user_id/show", function(req, res, next) {
   return User.create(req.body);
 });
 
-HELLLO;
+// BLASFADFASDFDSAFADSFDASF
+router.post("/:user_id/show", function(req, res, next) {
+  return User.create(req.body);
+});
