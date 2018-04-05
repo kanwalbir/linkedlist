@@ -21,6 +21,17 @@ app.get("/404", (req, res) => {
   return res.redirect("404");
 });
 
+//DRAFT
+app.get("/search", function(req, res, next) {
+  let db = User || Company || Job;
+  let searchValue = req.query;
+  return db.find(searchValue).then(results => {
+    return res.redirect("/search/results", { results, searchValue });
+  });
+});
+
+//MAKES search/results routes
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
