@@ -64,6 +64,14 @@ router.get("/:user_id/messages", function(req, res, next) {
     });
 });
 
+router
+  .get("/:user_id/applications", function(req, res, next) {
+    return User.findById(req.params.user_id)
+      .populate("Job").then((user) => {
+        return res.render("user/listOfApplications", { user })
+      })
+  })
+
 // DRAFT WILL FIX DURING AUTHENTICATION
 router.patch("/:user_id/connect", function(req, res, next) {
   let connection = req.params.user_id;
